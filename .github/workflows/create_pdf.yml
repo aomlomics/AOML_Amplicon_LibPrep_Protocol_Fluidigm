@@ -1,0 +1,89 @@
+name: create PDF workflow
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.md'
+      - '!.github/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  makepdfs:
+    runs-on: ubuntu-latest
+    container:
+      image: docker://pandoc/latex:2.9
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: prepare output directories
+        run: |
+          for d in */; do
+            mkdir -p output/"$d"
+          done
+
+      - name: create pdf file(s)
+        run: |
+          find . -type f \( -iname "*.md" ! -iname "README.md" \) | while read f; do 
+            # 1. Get the filename without extension and directory
+            # 2. Replace underscores with spaces for a cleaner look
+            CLEAN_NAME=$(basename "$f" .md | tr '_' ' ')
+
+            pandoc "$f" -s -o "output/${f%.md}.pdf" \
+            --toc \
+            --number-sections \
+            --pdf-engine=xelatex \
+            -V geometry:margin=1in \
+            -V header-includes="
+              \usepackage{fancyhdr}
+              \pagestyle{fancy}
+              \fancyhf{}
+              \lhead{$CLEAN_NAME}
+              \rhead{\thepage}
+              \renewcommand{\headrulewidth}{0.4pt}
+              \fancypagestyle{plain}{\fancyhf{}\lhead{$CLEAN_NAME}\rhead{\thepage}}
+              \renewcommand{\thesection}{}
+              \renewcommand{\thesubsection}{\arabic{subsection}}
+              \renewcommand{\thesubsubsection}{\arabic{subsection}.\arabic{subsubsection}}
+            " \
+            --verbose
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: output
+          path: output
+
+  pushpdfs:
+    needs: makepdfs
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: github.actor != 'github-actions[bot]'
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: output
+          path: pdf
+
+      - name: Add and commit files
+        run: |
+          git config --global user.name github-actions[bot]
+          git config --global user.email github-actions[bot]@users.noreply.github.com
+          
+          git add pdf/*.pdf
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto update pdfs [skip ci]" -a
+            git push
+          fi
