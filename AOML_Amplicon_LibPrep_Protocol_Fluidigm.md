@@ -19,7 +19,7 @@ language: en
 issued: 2026-05-08
 audience: scientists
 publisher: NOAA Atlantic Oceanographic and Meteorological Laboratory
-hasVersion: 1
+hasVersion: 2.0.0
 license: CC0 1.0 Universal
 maturity level: mature
 
@@ -92,6 +92,7 @@ seq_method_additional: not applicable
 | VERSION | RELEASE DATE | DESCRIPTION OF REVISIONS |
 | ------------- | ------------- | ------------- |
 | 1.0.0 | 2026-05-11 | Initial release |
+| 2.0.0 | 2026-10-15 | Added additional steps to protocol and required consumables |
 
 ### Acronyms and Abbreviations
 
@@ -114,7 +115,9 @@ This protocol was developed and implemented by NOAA AOML's Molecular and Computa
 
 ### Method description and rationale
 
-This protocol uses a secondary PCR to attach Illumina-compatible adapters and unique dual indexes to CS1/CS2-tagged eDNA amplicons, enabling multiplexed sequencing on the AVITI platform. Following indexing, libraries are purified and normalized using the Just-a-Plate™ system to remove residual primers and equalize sample concentrations prior to pooling. The pooled library is then quantified fluorometrically and assessed on the TapeStation to confirm appropriate concentration and fragment size distribution while identifying potential primer-dimer contamination. The two-step PCR design improves amplification consistency and reduces costs associated with fully indexed locus-specific primers, while unique dual indexing minimizes sample misassignment and index hopping. Overall, the workflow is optimized for high-throughput, reproducible preparation of eDNA amplicon libraries suitable for downstream biodiversity and metabarcoding analyses.
+This protocol uses a secondary PCR to attach Illumina-compatible adapters and unique dual indexes to CS1/CS2-tagged eDNA amplicons, enabling multiplexed sequencing on the AVITI platform. Following indexing, libraries are purified and normalized using the Just-a-Plate™ system to remove residual primers and equalize sample concentrations prior to pooling. The pooled library is then concentrated, purified using a bead clean-up and quantified fluorometrically on a TapeStation to confirm appropriate concentration and fragment size.
+
+The two-step PCR design improves amplification consistency and reduces costs associated with fully indexed locus-specific primers, while unique dual indexing minimizes sample misassignment and index hopping. Overall, the workflow is optimized for high-throughput, reproducible preparation of eDNA amplicon libraries suitable for downstream biodiversity and metabarcoding analyses.
 
 ### Spatial coverage and environment(s) of relevance
 
@@ -227,11 +230,11 @@ This step uses the Just-a-Plate™ system to simultaneously clean and equalize t
 
 1. Remove PCR2 plate from the thermal cycler and spin down so there is no remaining condensation along the sides of the wells. Allow plate to come to room temp.
 
-2. Using a multichannel, transfer 10-15 µL of PCR2 product to the Binding Plate (BP5).
+2. Using a multichannel, transfer 5 µL of PCR2 product to the Binding Plate (BP5).
 
-3. Gently swirl the Binding Buffer (NB7) to mix and add 20 uL of binding buffer to each sample well. Gently pipette to mix 5-6 times (Note: avoid introducing bubbles while pipetting).
+3. Gently swirl the Binding Buffer (NB7) to mix and add 5 uL of binding buffer to each sample well. Gently pipette to mix 5-6 times (Note: avoid introducing bubbles while pipetting).
 
-4. Seal the Binding Plate (BP5) with a foil and incubate at room temp for 30-60 minutes. (Note: the plate can be incubated overnight at room temperature if it fits your workflow).
+4. Seal the Binding Plate (BP5) with a foil and incubate the plate at room temperature for at least 1 hour. It is acceptable for the plate to incubate overnight if it fits your workflow.
 
 5. Remove the plate foil.
 
@@ -245,40 +248,55 @@ This step uses the Just-a-Plate™ system to simultaneously clean and equalize t
 
 9. Incubate the plate for 30 seconds at room temp.
 
-10. Remove the Wash Buffer (WB2) from the Binding Plate (BP5).
-
-11. Repeats step 8, 9 and 10 once more for a total of two washes.
-
-12. After the final wash, blot the plate dry on a piece of clean absorbent paper and air-dry the plate in a lab hood for 5-10 minutes to remove any residual liquid.
+10. Using a 200 uL pipette, completely remove buffer from wells and discard buffer. Go back with a P20 pipette tip, set to 20 µl to remove any residual liquid. It is acceptable to use the same set of tips for a whole plate.
 
 **Eluting Products**
 
-13. Add 20 ul of Elution Buffer (EB1) into each well of the Binding Plate (BP5).
+11. Add 20 ul of Elution Buffer (EB1) into each well of the Binding Plate (BP5).
 
-14. Seal the plate with a new plate foil and vortex the plate for 30 seconds. Centrifuge the plate at maximum speed briefly to collect all liquid at the bottom of the wells.
+12. Seal the plate with a new plate foil and vortex the plate for 30 seconds. Centrifuge the plate at maximum speed briefly to collect all liquid at the bottom of the wells.
 
-15. The eluted DNA fragments may be used immediately for downstream NGS application. Alternatively, the eluted products may be stored in the sealed plate at 4°C for short-term storage or at –20°C for long-term storage. 
+13. The eluted DNA fragments may be used immediately for downstream NGS application. Alternatively, the eluted products may be stored in the sealed plate at 4°C for short-term storage or at –20°C for long-term storage. 
 
-### Step 3: Pooling and Quality Control
+### Step 3: Pooling
 
 **Pooling**
 
-1. Label a 2 mL microcentrifuge tube with the name and info of your final pool.
+1. Label a 2 mL microcentrifuge tube with the name of your samples, "unconcentrated" and the date.
 
-2. Transfer 5 uL from every well of your normalized plate into tube (the "Final Pool").
+2. Transfer and pool the normalized libraries. Transfer all volume to a trough. It is acceptable to use the same set of tips for the whole plate. Use a P1000 to transfer all volume to the labeled 1.5 ml tube.
 
-**Quantification on Quant-iT**
+**Concentrator Columns**
 
-1. Allow Quant-iT reagents to come to room temperature (30 min).
+1. Insert Amicon Ultra-0.5 filter column into one of the provided Microcentrifuge tubes
 
-2. Use the first two columns of the Quant-iT plate for replicates of reach of the 8 standards. Pipette 10 uL of each standard into the first two columns.
+2. Add 500 µl of sample pool to the Amicon filter column and cap it.
 
-3. Using a multichannel, pipette 2 uL of each sample into corresponding wells of plate.
+3. Place capped filter device into the centrifuge rotor, aligning the cap toward center of rotor. Counterbalance with a similar device.
 
-4. Using a repeater pipette, carefully dispense 200 uL of working solution into each well of the plate.
+4. Spin at 10,000 rcf for 2 minutes.
 
-5. Turn on varioskan, select correct protocol, place plate onto varioskan and begin run.
-    - Target yield: >5 nM (typically ~2–5 ng/µL for most amplicons).
+5. Remove flow thru to a microcentrifuge tube labelled with the pool name, “Flow-thru” and the date.
+
+6. Repeat the above steps 2-5 with up to 500 µl of remaining sample until all sample volume has been added. With successive spins, 500 µl of sample volume may not fit in the column. Therefore, the volume of sample added to the column each time may need to be reduced so that it does not go above the "400" mark on the concentrator column.
+
+7. Spin until volume remaining is between the "20" and "100" marks on the column.
+
+8. Label the provided microcentrifuge tube with the pool name and the date.
+
+9. To recover concentrated solute, place the amicon filter device upside down into the labeled microcentrifuge tube provided with kit.
+
+10. Place in centrifuge rotor, aligning the cap toward center of rotor. Counterbalance with a similar device.
+
+11. Spin for 2 minutes at 1,000 rcf.
+
+12. Label a new 1.5 mL microcentrifuge tube with the pool name, "concentrated" and the date.
+
+13. Transfer the concentrated pool to the new labeled 1.5 mL tube.
+
+14. Save flow-through in a tube labeled with the pool name, “Flow-thru” and the date. Discard flow-through tube after final library concentration is measured via TapeStation.
+
+**Bead Clean-Up**
 
 **Size Verification on TapeStation**
 
