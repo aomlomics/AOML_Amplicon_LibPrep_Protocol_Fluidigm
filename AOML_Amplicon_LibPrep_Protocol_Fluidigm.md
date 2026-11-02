@@ -19,7 +19,7 @@ language: en
 issued: 2026-05-08
 audience: scientists
 publisher: NOAA Atlantic Oceanographic and Meteorological Laboratory
-hasVersion: 2.0.0
+hasVersion: 2.1.0
 license: CC0 1.0 Universal
 maturity level: mature
 
@@ -42,7 +42,7 @@ seq_method_additional: not applicable
 
 ---
 
-# NOAA/AOML Amplicon Library Prep Protocol
+# NOAA/AOML Amplicon Library Preparation Protocol
 
 ## PROTOCOL INFORMATION
 
@@ -93,6 +93,7 @@ seq_method_additional: not applicable
 | ------------- | ------------- | ------------- |
 | 1.0.0 | 2026-05-11 | Initial release |
 | 2.0.0 | 2026-10-15 | Added additional steps to protocol and required consumables |
+| 2.1.0 | 2026-11-02 | Clarified additional steps to protocol and required consumables |
 
 ### Acronyms and Abbreviations
 
@@ -148,18 +149,26 @@ This protocol takes about 3.5 hours to complete.
 | Vortex | Vortex Genie | Scientific Industries | 1 | Can be substituted with generic |
 | PCR Plate Centrifuge | Microplate Centrifuge | Generic Brand | 1 | Can be substituted with generic |
 | Agilent 4200 TapeStation | Agilent 4200 TapeStation | Agilent | 1 |  |
+| Microwave | Generic Microwave | Generic Brand | 1 | |
+| Flask | 500 mL Flask | Generic Brand | 1 | Used for mixing agarose gel solution |
+| 1-L Glass Container | 1 L Glass Container | Generic Brand | 1 | Used for storing 1x TBE buffer |
+| Gel Tray & Box | Gel Electrophoresis Box and Tray | Generic Brand | 1 | Can be substituted with generic |
+| Gel Combs | Gel Electrophoresis Combs | Generic Brand | 2 | Can be substituted with generic |
+| Mag Stand | Magnetic rack for microcentrifuge tubes | Generic Brand | 1 |  |
 | 0.5-10 ul Pipette | Eppendorf Research Plus Adjustable-Volume Pipette | Eppendorf | 1 | Can be substituted with any accurate pipette |
 | 100-1000 ul Pipette | Eppendorf Research Plus Adjustable-Volume Pipette | Eppendorf | 1 | Can be substituted with any accurate pipette |
 | 10-100 ul Pipette | Eppendorf Research Plus Adjustable-Volume Pipette | Eppendorf | 1 | Can be substituted with any accurate pipette |
 | 10-100 ul 8-Channel Pipette | Eppendorf Research Plus 8 Channel Pipette | Eppendorf | 1 | Can be substituted with any accurate pipette |
 | 0.5-10 uL 8-Channel Pipette | Eppendorf Research Plus 8 Channel Pipette | Eppendorf | 1 | Can be substituted with any accurate pipette |
-| Serological Pipette | Eppendorf Easypet 3 Pipette | Eppendorf | 1 | Can be substituted with any accurate pipette |
 | **Consumable equipment** |
-| DreamTaq Master Mix | DreamTaq PCR Master Mix (2X) | ThermoFisher | 1 |  |
+| DreamTaq Master Mix | DreamTaq Hot Start PCR Master Mix (2X) | ThermoFisher | 1 |  |
 | Just-a-Plate Kit | Just-a-Plate ™ 96 PCR Normalization and Purification Kit, 96 X 10 (Preps) | CharmBiotech | 1 |  |
 | Barcode Library | Access Array™ Barcode Library for Illumina® Sequencers— 384, Single Direction | Standard BioTools | 1 |  |
 | Quant-iT kit | Invitrogen Quant-iT 1X dsDNA Assay Kits, high sensitivity (HS) and broad range (BR) | Invitrogen | 1 |  |
-| TapeStation Assay | TapeStation D1000 DNA ScreenTape & Reagents | Agilent | 1 |  |
+| Amicon Concentrator Column | Millipore Sigma Amicon Ultra-0.5 Centrifugal Filter Units | Millipore Sigma | 1 |  |
+| HighPrep PCR Clean-Up Beads | HighPrep paramagnetic bead-based reagent for PCR clean up 50 mL | MAGBIO GENOMICS INC | 1 |  |
+| Resuspension Buffer (RSB) - from Illumina Library Preparation Kit (not sold separately) |  | Illumina | 1 | Note from Illumina: 10 mM Tris-HCl, pH 8.5 can be used as a substitute for RSB when diluting libraries prior to sequencing. Nuclease-free water can also be used. |
+| TapeStation Assay | TapeStation HS D1000 DNA ScreenTape & Reagents | Agilent | 1 |  |
 | 96-well PCR plate | Armadillo PCR Plate, 96-well, clear, clear wells | ThermoFisher | 1 | |
 | Aluminum Foil Sealing Tape | AlumaSeal II Sealing Foils for PCR and Cold Storage | VWR | 7 | Can be substituted with generic | 
 | 8-Strip Tubes | 0.2 mL 8-Strip PCR Tubes | Generic Brand | 5 | tubes without caps attached are better |
@@ -169,6 +178,11 @@ This protocol takes about 3.5 hours to complete.
 | 10 ul Filter tips | TipOne Pipette Tips, 10 uL | TipOne | 9 | (boxes) Can be substituted with generic |
 | Gloves | Nitrile Gloves, Exam Grade, Powder-free | ULINE | 1 | (box) Can be substituted with generic |
 | Kim Wipes | KimWipe Delicate Task Wipers | KimTech | 1 | (box) Can be substituted with generic |
+| TBE Buffer (10x) | TBE Buffer 10X Solution, Molecular Biology Grade, UltraPure | Thermo Scientific | 100 | (uL) |
+| Agarose | Agarose LE, Molecular Biology Grade, UltraPure | Thermo Scientific | 4 | (g) |
+| SYBR Safe | SYBR Safe DNA Gel Stain | Invitrogen | 20 | (uL) Light sensitive - do not expose to light |
+| Gel stain loading dye | DNA Gel Loading Dye (6x) | Thermo Scientific | 480 | (ul per plate) |
+| 100bp DNA Ladder | Generuler 100 bp DNA Ladder | Thermo Scientific | 6 | (ul per lane on gel) |
 | **Chemicals** |
 | 80% Ethanol | Molecular biology grade ethanol |  |  |  |
 | Nuclease-free water | Nuclease-Free Water (not DEPC-Treated) | ThermoFisher Scientific | 1 | (mL vial) |
@@ -222,6 +236,26 @@ This step attaches the P5/P7 adapters and i5/i7 barcodes to your primary amplico
 
 8. Place plate on thermal cycler and run the programmed protocol.
 
+9. After protocol has finished running, prepare a gel to confirm clean PCR blanks and amplification of secondary PCR products.
+
+**QC of Indexing PCR Products on TapeStation**
+
+1. Allow HS D1000 tape and reagents to come to room temperature (30 min).
+
+2. Turn on TapeStation, flick tape to remove any air bubbles and place tape into machine.
+
+3. Using an 8-strip tube, pipette the following quantities of reagents:
+    - Well A1 (always reserved for ladder): 3 uL buffer + 1 uL ladder DNA
+    - Remainder wells: 3 uL buffer + 1 uL sample DNA (or NTC)
+
+4. Briefly spin down 8-strip tube to ensure all volume is in the bottom of the wells.
+
+5. Using plate vortexer, place 8 strip tubes with cap strip into foam and vortex for 1 minute.
+
+6. Remove 8 strip cap and place 8 strip tube onto tapestation.
+
+7. Begin run on TapeStation program and record measurements when done. The concentration of the NTC must be less than 0.080 nmol/L to proceed. If NTC is >0.080 nmol/L, the plate must be reamplified using fresh reagents.
+
 ### Step 2: Normalization and Purification
 
 This step uses the Just-a-Plate™ system to simultaneously clean and equalize the concentration of your samples.
@@ -238,7 +272,7 @@ This step uses the Just-a-Plate™ system to simultaneously clean and equalize t
 
 5. Remove the plate foil.
 
-6. Remove the liquid from the Binding Plate (BP5).
+6. Remove the liquid (~10 uL) from the Binding Plate (BP5). Do not scrape the sides of wells with tips. It is acceptable to use the same set of tips for the entire plate.
 
 **Washing Plate**
 
@@ -252,23 +286,25 @@ This step uses the Just-a-Plate™ system to simultaneously clean and equalize t
 
 **Eluting Products**
 
-11. Add 20 ul of Elution Buffer (EB1) into each well of the Binding Plate (BP5).
+11. Add 20 ul of Elution Buffer (EB1) into each well of the Binding Plate (BP5) and pipette to mix 5-6 times.
 
-12. Seal the plate with a new plate foil and vortex the plate for 30 seconds. Centrifuge the plate at maximum speed briefly to collect all liquid at the bottom of the wells.
+12. Seal the plate with a new plate foil, gently vortex, then spin down the plate briefly to collect all liquid at the bottom of the wells.
 
-13. The eluted DNA fragments may be used immediately for downstream NGS application. Alternatively, the eluted products may be stored in the sealed plate at 4°C for short-term storage or at –20°C for long-term storage. 
+13. Incubate at room temp for 5 minutes.
+
+14. The eluted DNA fragments may be used immediately for downstream NGS application. Alternatively, the eluted products may be stored in the sealed plate at 4°C for short-term storage or at –20°C for long-term storage. 
 
 ### Step 3: Pooling
 
 **Pooling**
 
-1. Label a 2 mL microcentrifuge tube with the name of your samples, "unconcentrated" and the date.
+1. Label a 2 mL microcentrifuge tube with the pool name, "unconcentrated" and the date.
 
-2. Transfer and pool the normalized libraries. Transfer all volume to a trough. It is acceptable to use the same set of tips for the whole plate. Use a P1000 to transfer all volume to the labeled 1.5 ml tube.
+2. Transfer and pool the normalized libraries. It is acceptable to use the same set of tips for the whole plate. Use a P1000 to transfer all volume to the labeled 1.5 ml tube.
 
-**Concentrator Columns**
+### Step 4: Concentrating Library Pool
 
-1. Insert Amicon Ultra-0.5 filter column into one of the provided Microcentrifuge tubes
+1. Insert Amicon Ultra-0.5 filter column into one of the provided microcentrifuge tubes
 
 2. Add 500 µl of sample pool to the Amicon filter column and cap it.
 
@@ -296,9 +332,47 @@ This step uses the Just-a-Plate™ system to simultaneously clean and equalize t
 
 14. Save flow-through in a tube labeled with the pool name, “Flow-thru” and the date. Discard flow-through tube after final library concentration is measured via TapeStation.
 
-**Bead Clean-Up**
+### Step #5: Bead Clean-Up
 
-**Size Verification on TapeStation**
+1. Equilibrate beads to room temperature for at least 30 minutes before using.
+
+2. Measure library pool volume to calculate volume of MagBio HighPrep PCR beads to add to library pool:
+
+      Pool volume (uL) x 0.8 = volume of beads (uL)
+
+3. Add beads to library pool and mix gently by pipetting up and down 12 times.
+
+4. Incubate at room temp for 10 minutes.
+
+5. Open tube and place on magnet. Wait 5 minutes for solution to clear completely.
+
+6. With tube still on magnet, remove and discard the supernatant.
+
+7. With tube still on magnet, add 200 uL of freshly prepared 80% ethanol without disturbing the bead pellet.
+
+8. Wait 30 seconds.
+
+9. Remove and discard the ethanol.
+
+10. Repeat ethanol wash (steps 7-9) for a total of two washes.
+
+11. Completely remove the ethanol from the second wash by going back into the tube with a 20 uL pipette tip.
+
+12. Allow to dry on the magnet for 5-10 min.
+
+13. Remove tube from magnet and add 30 uL of Resuspension Buffer (Illumina RSB) to the pellet. Pipette up and down 12 times to thoroughly mix.
+
+14. Incubate at room temp for 2 minutes.
+
+15. Open tube and put on magnet. Wait 5 minutes for the solution to clear completely.
+
+16. Label a new 1.5 mL microcentrifuge tube with the pool name, date and "Final Library".
+
+17. Carefully pipette supernatant, free of beads, into the labeled microcentrifuge tube. This is the final library pool for QC.
+
+18. The final library pool is to be stored in a -20°C freezer.
+
+**Final QC on TapeStation**
 
 1. Allow HS D1000 tape and reagents to come to room temperature (30 min).
 
@@ -314,11 +388,17 @@ This step uses the Just-a-Plate™ system to simultaneously clean and equalize t
 
 6. Remove 8 strip cap and place 8 strip tube onto tapestation.
 
-7. Begin run on TapeStation program and record measurements.
+7. Begin run on TapeStation program and record measurements when done.
+
+8. After pool verification, discard the flow-through tube.
 
 ### Basic troubleshooting guide
 
-Not applicable
+Step 1: Secondary (Indexing) PCR
+ - Be sure to include an NTC (PCR blank) in the indexing PCR step. The PCR blank should not have appear to have any amplification on the subsequent gel image and TapeStation run. If there does seem to be amplification on the gel, or if the NTC is >0.080 nmol/L on the TapeStation, re-run the indexing PCR using fresh reagents.
+
+Step 2: Normalization and Purification
+ - Do not measure library concentrations prior to pooling and concentrating libraries. It is normal for library concentrations to be low after running the just-a-plate protocol. After the just-a-plate kit, immediately proceed to pooling, concentrating and performing the bead clean-up.
 
 ## REFERENCES
 
